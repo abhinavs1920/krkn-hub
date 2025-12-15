@@ -31,32 +31,69 @@
         "default":"default"
     },
     {
-        "name":"node-selector",
-         "short_description":"Node Selector",
-         "description":"Node selector where the scenario containers will be scheduled in the format \"<selector>=<value>\". NOTE:  Will be instantiated a container per each node selected with the same scenario options. If left empty a random node will be selected",
-         "variable":"NODE_SELECTOR",
-         "type":"string",
-         "validator": "^$|^.+\\=.*$",
-         "validation_message": "Node selector must be in the format: key=value",
-         "default":"",
-         "required": "false"
-     },
-   {
-        "name":"number-of-nodes",
-         "short_description":"Number of nodes",
-         "description":"restricts the number of selected nodes by the selector",
-         "variable":"NUMBER_OF_NODES",
-         "type":"number",
-         "required": "false"
-     },
-      {
-        "name":"image",
-         "short_description":"Hog Container image",
-         "description":"The hog container image. Can be changed if the hog image is mirrored on a private repository",
-         "variable":"IMAGE",
-         "type":"string",
-         "default":"quay.io/krkn-chaos/krkn-hog",
-         "required": "false"
-     }
-
+        "name": "node-selector",
+        "short_description": "Node Selector",
+        "description": "Node selector where the scenario containers will be scheduled in the format \"<selector>=<value>\". NOTE:  Will be instantiated a container per each node selected with the same scenario options. If left empty a random node will be selected",
+        "variable": "NODE_SELECTOR",
+        "type": "string",
+        "validator": "^$|^.+\\=.*$",
+        "validation_message": "Node selector must be in the format: key=value",
+        "default": "",
+        "required": "false"
+    },
+    {
+        "name": "number-of-nodes",
+        "short_description": "Number of nodes",
+        "description": "restricts the number of selected nodes by the selector",
+        "variable": "NUMBER_OF_NODES",
+        "type": "number",
+        "required": "false"
+    },
+    {
+        "name": "image",
+        "short_description": "Hog Container image",
+        "description": "The hog container image. Can be changed if the hog image is mirrored on a private repository",
+        "variable": "IMAGE",
+        "type": "string",
+        "default": "quay.io/krkn-chaos/krkn-hog",
+        "required": "false"
+    },
+    {
+        "name": "resiliency-config-path",
+        "short_description": "Resiliency Config File",
+        "description": "Path to a custom resiliency_profile.yaml file. If not provided, the default alerts.yaml will be used.",
+        "variable": "RESILIENCY_CONFIG_PATH",
+        "type": "string",
+        "required": "false"
+    },
+    {
+        "name": "resiliency-weight",
+        "short_description": "Resiliency Weight",
+        "description": "The weight of this scenario in the final weighted-average score. Default is 1.",
+        "variable": "RESILIENCY_WEIGHT",
+        "type": "number",
+        "default": "1",
+        "required": "false"
+    },
+    {
+        "name": "krkn-run-mode",
+        "short_description": "Krkn Run Mode",
+        "description": "Sets the execution mode for krkn",
+        "variable": "KRKN_RUN_MODE",
+        "type": "enum",
+        "default": "controller",
+        "allowed_values": "controller,standalone",
+        "separator": ",",
+        "required": "true"
+    },
+    {
+    "name": "prometheus-url",
+    "short_description": "Prometheus URL",
+    "description": "URL of the Prometheus server for metrics collection",
+    "variable": "prometheus_url",
+    "type": "string",
+    "default": "http://localhost:9090",
+    "validator": "^(http|https):\/\/.*",
+    "required": "false"
+  }
 ]
